@@ -1,0 +1,32 @@
+<div class="row" *ngIf="movies.length > 0">
+    <div class="col">
+        <app-slideshow [movies]="moviesSlideshow"></app-slideshow>
+    </div>
+</div>
+
+
+<h2 class="margen">Películas Populares</h2>
+
+<app-peliculas-poster-grid 
+    *ngIf="movies.length > 0"
+    [movies]="movies">
+    	
+</app-peliculas-poster-grid>
+
+
+<h2 class="margen">Series Populares</h2>
+
+<app-popular-series *ngIf="series.length > 0" [series]="series">
+	
+</app-popular-series>
+
+
+<h2 class="margen text-center">Las péliculas mas aclamadas</h2>
+
+<app-peliculas-aclamadas *ngIf="peliculas.length > 0" [peliculas]="peliculas">
+	
+</app-peliculas-aclamadas>
+
+
+
+

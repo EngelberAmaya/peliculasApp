@@ -1,0 +1,22 @@
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+
+        <div *ngFor="let serie of series"
+             class="swiper-slide text-white text-center">
+
+            <img [src]="serie.backdrop_path | poster" 
+                 
+                 class="img-thumbnail"/>
+            <!--{{ serie.name }}-->       
+
+        </div>
+
+    </div>
+
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    
+</div>

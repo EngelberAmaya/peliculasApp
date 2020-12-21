@@ -1,0 +1,18 @@
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+
+        <div *ngFor="let pelicula of peliculas"
+             class="swiper-slide text-white text-center">
+
+            <img [src]="pelicula.poster_path | poster" 
+                 (click)="onMovieClick( pelicula )"
+                 class="img-thumbnail"/>
+            <!--{{ pelicula.title }}-->      
+
+        </div>
+
+    </div>
+
+    
+</div>

@@ -1,0 +1,23 @@
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+    <div class="carousel-inner">
+        <div class="carousel-item " [ngClass]="{active:isFirst}" *ngFor="let movie of movies;
+        index as i;first as isFirst">
+            <img  class="d-block w-100" src="{{movie.backdrop_path | poster}}">
+            <div class="carousel-caption d-none d-md-block">
+                <h2>{{ movie.title }}</h2>
+                <h3>Más Popular</h3>
+                <!--<star-rating [value]="pelicula.vote_average" 
+                                totalstars="5"
+                                checkedcolor="yellow" 
+                                uncheckedcolor="grey" 
+                                size="20px" 
+                                readonly="false"></star-rating>-->
+              </div>
+            
+        </div>
+    </div>
+
+</div>
+

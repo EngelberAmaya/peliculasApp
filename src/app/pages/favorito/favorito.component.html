@@ -1,0 +1,24 @@
+<h1 class="text-center">Mis Favoritas</h1>
+
+<h2 class="text-center" *ngIf="!movies">No hay peliculas favoritas</h2>
+
+<div class="row" *ngFor="let movie of movies">
+	<div class="col-2"></div>
+    <div class="col-3 animate__animated animate__fadeIn" >
+
+        <img [src]="movie.poster_path | poster"
+             class="img-fluid poster"
+             (click)="onMovieClick( movie )">
+        
+
+    </div>
+
+    <div class="col-7">
+    	<h3>{{ movie.title }}</h3>
+    	<h3>{{ movie.release_date }}</h3>
+    	<button (click)="eliminarPelicula(movie)" type="button" class="btn btn-light">
+    		<i class="fas fa-heart"></i>
+    		Eliminar de favoritas
+    	</button>
+    </div>
+</div>

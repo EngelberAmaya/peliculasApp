@@ -1,0 +1,23 @@
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+
+        <div *ngFor="let movie of movies"
+             class="swiper-slide text-white text-center">
+
+            <img [src]="movie.backdrop_path | poster" 
+                 (click)="onMovieClick( movie )"
+                 class="img-thumbnail"/>
+            <!--{{ movie.title }}-->       
+
+        </div>
+
+    </div>
+
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+
+</div>
