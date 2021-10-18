@@ -1,5 +1,5 @@
 {
-  "name": "peliculas-app",
+  "name": "peliculas",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -21,6 +21,7 @@
     "@angular/router": "~10.0.14",
     "ng-starrating": "^1.0.20",
     "rxjs": "~6.5.5",
+    "sweetalert2": "^11.1.7",
     "swiper": "^6.2.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

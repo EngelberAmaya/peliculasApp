@@ -7,25 +7,15 @@
     </div>
 </div>
 
-<div *ngIf="mensaje">
-    <div class="toast d-flex align-items-center text-white bg-primary border-0"
-                role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-body">
-        Agregada a favoritos
-      </div>
-      <button type="button" class="btn-close btn-close-white ms-auto me-2"
-              data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-</div>
 
 <div class="row" style="color: #9C9290">
-    <div class="col poster-detalle-sobre">
-        <img class="peli" [src]="pelicula.poster_path | poster">
+    <div class="col poster-detalle-sobre geneMovil">
+        <img class="peli peliMovil" [src]="pelicula?.poster_path | poster">
 
         <div class="row top">
             <div class="col">
                 <span class="badge badge-pill badge-light bad"
-                    *ngFor="let genero of pelicula.genres">
+                    *ngFor="let genero of pelicula?.genres">
                     {{ genero.name }}
                 </span>
             </div>
@@ -37,11 +27,11 @@
     <!--<div class="row">-->
        
         <div class="col" style="margin-top: 25px;">
-            <h3>{{ pelicula.title }}</h3>
+            <h3>{{ pelicula?.title }}</h3>
 
             <div class="row">
                 <div class="col">
-                    <star-rating [value]="pelicula.vote_average" 
+                    <star-rating [value]="pelicula?.vote_average" 
                                 totalstars="5"
                                 checkedcolor="yellow" 
                                 uncheckedcolor="grey" 
@@ -51,16 +41,16 @@
                 
             </div>
 
-            <div class="row mt-3">
+            <div class="row col-sm-12 mt-3">
                 <div class="col text-white">
-                    {{ pelicula.overview }}
+                    {{ pelicula?.overview }}
                 </div>
             </div>
 
             <div class="row top">
                 <div class="col">
                     <button type="button" (click)="peliculasFavoritas()" class="btn btn-outline-danger izq">
-                        <i class="far fa-heart" style="width: 30px; font-size: 30px"></i>
+                        <i class="far fa-heart"></i>
                         Agregar a favoritas
                     </button>
                     
@@ -80,17 +70,7 @@
 </div>
 
 
-
-<div *ngIf="mensaje" class="text-center" style="margin-bottom: 15px">
-
-    <button type="button" class="btn btn-primary">      
-      <span class="visually-hidden">Agregada a favoritos.</span>
-    </button>
-
-</div>
-
-
-<div class="row" *ngIf="cast.length > 0">
+<div class="row mt-4" *ngIf="cast.length > 0">
     <div class="col">
         <app-cast-slideshow [cast]="cast"></app-cast-slideshow>
     </div>

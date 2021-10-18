@@ -1,6 +1,8 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { PeliculasService } from '../../services/peliculas.service';
 import { Movie } from '../../interfaces/cartelera-response';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +17,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   public seriesPop: Movie[] = []
   public peliculas: Movie[] = []
   public peliculasAclama: Movie[] = []
+  unsubscribe$ = new Subject();
+
+  cargando1 = true;
+  cargando2 = true;
+  cargando3 = true;
 
   /*@HostListener('window:scroll', ['$event'])
   onScroll() {
@@ -41,13 +48,15 @@ export class HomeComponent implements OnInit, OnDestroy {
 
       this.peliculasPopulares();
       this.seriesPopulares();
-      this.peliculasAclamadas();
+      this.peliculasInfantiles();
   }
 
 
   peliculasPopulares(){
+    this.cargando1 = true;
     this.peliculasService.getPopulares()
         .subscribe( movies => {
+          this.cargando1 = false;
           this.movies = movies;
           this.moviesSlideshow = movies;
           //console.log(movies);
@@ -56,8 +65,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
   seriesPopulares(){
+    this.cargando2 = true;
     this.peliculasService.getSeriesPopulares()
         .subscribe( series => {
+          this.cargando2 = false;
           this.series = series;
           this.seriesPop = series;
           //console.log(series);
@@ -65,9 +76,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
 
-  peliculasAclamadas(){
-    this.peliculasService.getPeliculasAclamadas()
+  peliculasInfantiles(){
+    this.cargando3 = true;
+    this.peliculasService.getPeliculasInfantiles()
         .subscribe( peliacla => {
+          this.cargando3 = false;
           this.peliculas = peliacla;
           this.peliculasAclama = peliacla;
           //console.log(peliacla);
@@ -76,7 +89,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.peliculasService.resetCarteleraPage();
+    //this.peliculasService.resetCarteleraPage();
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 
 }

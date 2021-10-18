@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Movie } from '../../interfaces/cartelera-response';
+import { PeliculasService } from '../../services/peliculas.service'
 
 import Swiper from 'swiper';
 
@@ -13,7 +14,7 @@ export class PeliculasPosterGridComponent implements OnInit {
 
   @Input() movies: Movie[];
 
-  constructor( private router: Router ) { }
+  constructor( private router: Router, public peliculasService: PeliculasService ) { }
 
   ngOnInit(): void {
     // console.log(this.movies);

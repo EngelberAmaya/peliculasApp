@@ -6,6 +6,7 @@ import { PeliculasService } from '../../services/peliculas.service';
 import { MovieResponse } from '../../interfaces/movie-response';
 import { Cast } from '../../interfaces/credits-response';
 import { combineLatest } from 'rxjs';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-pelicula',
@@ -55,7 +56,13 @@ export class PeliculaComponent implements OnInit {
 
   peliculasFavoritas(){
     this.dataLocalService.guardarStorage(this.pelicula);
-    this.mensaje = true;
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Agregada a Favoritos',
+      showConfirmButton: false,
+      timer: 1500
+    })
         
     //this.dataLocalService.guardarPelicula( this.pelicula );
   }

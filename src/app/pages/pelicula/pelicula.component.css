@@ -61,8 +61,10 @@ h1{
 }
 
 .peli{
-    width: 65%;
-    height: 95%;
+    /*width: 65%;
+    height: 95%;*/
+    width: 300px;
+    height: 400px;
 }
 
 .top{
@@ -78,6 +80,25 @@ h1{
 
 .der{
    margin-left: 50%;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+ .peliMovil{
+    display: none;
+ }
+
+ .geneMovil {
+    display: none;
+ }
+
+ .infoMovil {
+    width: 100%;
+ }
+
+ .margenMovil {
+    
+ }
 
 }
 

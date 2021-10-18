@@ -45,20 +45,15 @@ export class PeliculasService {
 
   getPopulares():Observable<Movie[]> {
 
-    if ( this.cargando ) {
-      // cargando peliculas
-      return of([]);
-    }
 
-
-    this.cargando = true;
+    
     return this.http.get<CarteleraResponse>(`${ this.baseUrl }/discover/movie?sort_by=popularity.desc`,{
       params: this.params
     }).pipe(
       map( (resp) => resp.results ),
       tap( () => {
-        this.carteleraPage += 1;
-        this.cargando = false;
+        //this.carteleraPage += 1;
+        
       })
     );
 
@@ -68,20 +63,12 @@ export class PeliculasService {
 
   getSeriesPopulares():Observable<Movie[]> {
 
-    /*if ( this.cargando ) {
-      // cargando peliculas
-      return of([]);
-    }*/
-
-
-    this.cargando = true;
     return this.http.get<CarteleraResponse>(`${ this.baseUrl }/tv/popular`,{
       params: this.params
     }).pipe(
       map( (resp) => resp.results ),
       tap( () => {
-        this.carteleraPage += 1;
-        this.cargando = false;
+        //this.carteleraPage += 1;
 
       })
     );
@@ -90,23 +77,14 @@ export class PeliculasService {
   }
 
 
-  getPeliculasAclamadas():Observable<Movie[]> {
+  getPeliculasInfantiles():Observable<Movie[]> {                 
 
-    /*if ( this.cargando ) {
-      // cargando peliculas
-      return of([]);
-    }*/
-                          
-
-    this.cargando = true;
-    return this.http.get<CarteleraResponse>(`${ this.baseUrl }/movie/top_rated`,{
+    return this.http.get<CarteleraResponse>(`${ this.baseUrl }/discover/movie?with_genres=35&sort_by=revenue.desc`,{
       params: this.params
     }).pipe(
       map( (resp) => resp.results ),
       tap( () => {
-        this.carteleraPage += 1;
-        this.cargando = false;
-
+        //this.carteleraPage += 3;
       })
     );
 
